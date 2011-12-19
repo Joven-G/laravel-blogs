@@ -55,7 +55,7 @@ return array(
 			'host'     => 'a.db.shared.orchestra.io',
 			'database' => 'db_6f9bebd1',
 			'username' => 'user_6f9bebd1',
-			'password' => 'p3^GTI$P7v_Fu$',
+			'password' => 'p3^GTl$P7v_Fu$',
 			'charset'  => 'utf8',
 		),
 
