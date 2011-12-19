@@ -3,7 +3,7 @@
 return array(
 
 //----------------- Posts ----------------------
-	'GET /, GET /posts' => array('name' => 'home', 'do' => function()
+	'GET /, GET /posts' => function()
 	{
 	  $posts = Post::with('user', 'category')->paginate();
 		return View::make('layouts.default')->partial('content', 'posts.index', array(
@@ -11,7 +11,7 @@ return array(
 		));
 	}),
 	
-	'GET /posts/(\d+)' => array('name' => 'show_post', 'do' => function($id)
+	'GET /posts/(\d+)' => function($id)
 	{
 	  Asset::add('post_show', 'js/posts/show.js');
 	  $post = Post::with('user', 'comments', 'category')->find($id);
@@ -52,120 +52,6 @@ return array(
 	  }
 	}),
 	
-//----------------- Sessions -------------------
-  'GET /session/new' => array('name' => 'login', 'do' => function()
-  {
-    return View::make('layouts.default')->partial('content', 'session.new', array(
-      'error_message' => false,
-    ));
-  }),
-
-  'POST /session' => array('name' => 'create_session', 'do' => function()
-  {
-    $validator = Validator::make($_POST, array(
-      'username' => array('required'),
-      'password' => array('required')
-    ));
-
-    if ($validator->valid() and Auth::login($_POST['username'], $_POST['password']))
-    {
-      return Redirect::to_home()->with('success', 'Login successful');
-    }
-    else
-    {
-      return View::make('layouts.default')->partial('content', 'session.new', array(
-        'error_message' => 'Wrong username and password',
-      ));  
-    }
-  }),
-
-  'GET /session/destroy' => array('name' => 'logout', 'do' => function()
-  {
-    Auth::logout();
-    return Redirect::to_home()->with('notice', 'Logout successful');  
-  }),
-//----------------- Users ----------------------
-  'GET /users' => array('name' => 'users', 'before' => 'auth, admin', 'do' => function()
-  {
-    $users = User::paginate();
-    return View::make('layouts.default')->partial('content', 'users/index', array(
-      'users' => $users,
-    ));
-  }),
-
-  'GET /users/(\d+)' => array('name' => 'user', 'before' => 'auth, admin', 'do' => function($id)
-  {
-    $user = User::find($id);
-    if (! $user) return Response::error('404');
-
-    return 'Under construction';
-  }),
-
-  'GET /users/new' => array('name' => 'register', 'do' => function()
-  {
-    $user = new User;
-    return View::make('layouts.default')->partial('content', 'users.new', array(
-      'user' => $user,
-    ));
-  }),
-
-  'POST /users' => array('name' => 'create_user', 'do' => function()
-  {
-    $user = new User;
-    $user->fill(array(
-      'username'              => Input::get('username'), 
-      'email'                 => Input::get('email'),
-      'password'              => Input::get('password'),
-      'password_confirmation' => Input::get('password_confirmation')
-    ));
-    if ($user->is_valid_new_user())
-    {
-      $user->save();
-      return Redirect::to_home()->with('success', 'Registration successful');
-    }
-    else 
-    {
-      return View::make('layouts.default')->partial('content', 'users.new', array(
-        'user' => $user,
-      ));
-    }
-  }),
-
-  'GET /users/(\d+)/edit' => array('name' => 'edit_user', 'before' => 'auth, admin', 'do' => function($id)
-  {
-    $user = User::find($id);
-    return View::make('layouts.default')->partial('content', 'users.edit', array(
-      'user' => $user,
-    ));
-  }),
-
-  'PUT /users/(\d+)' => array('name' => 'update_user', 'before' => 'auth, admin, csrf', 'do' => function($id)
-  {
-    $user = User::find($id);
-    $user->fill(array(
-      'username' => Input::get('username'),
-      'email'    => Input::get('email'),
-      'roles'    => array_sum(Input::get('roles')),
-    ));
-    if ($user->is_valid())
-    {
-      $user->save();
-      return Redirect::to_users()->with('success', 'User updated successfully');
-    }
-    else
-    {
-      return View::make('layouts.default')->partial('content', 'users/edit', array(
-        'user' => $user,
-      ));
-    }
-  }),
-
-  'GET /users/(\d+)/destroy' => array('name' => 'destroy_user', 'before' => 'auth, admin', 'do' => function($id)
-  {
-    User::find($id)->delete();
-    return Redirect::to_users()->with('notice', 'User destroyed successfully');
-  }),
-
 //----------------- Comments -------------------
 
   'POST /comments' => array('name' => 'create_comment', 'before' => 'csrf', 'do' => function() 
