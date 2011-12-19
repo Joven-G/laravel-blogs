@@ -23,7 +23,7 @@ class Post extends Eloquent
 
     public function tags()
     {
-      return $this->has_and_belongs_to_many('Tag','post_tag')
+      return $this->has_and_belongs_to_many('Tag','post_tag');
     }
 
     private $errors = array();
