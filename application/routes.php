@@ -9,7 +9,7 @@ return array(
 		return View::make('layouts.default')->partial('content', 'posts.index', array(
 		  'posts' => $posts,
 		));
-	}),
+	},
 	
 	'GET /posts/(\d+)' => function($id)
 	{
@@ -18,16 +18,16 @@ return array(
 	  return View::make('layouts.default')->partial('content', 'posts.show', array(
 	    'post' => $post,
 	  ));
-	}),
+	},
 	
-	'GET /posts/new' => array('name' => 'new_post', 'before' => 'auth, editor', 'do' => function()
+	'GET /posts/new' => function()
 	{
 	  $post = new Post;
 	  return View::make('layouts.default')->partial('content', 'posts.new', array(
 	    'post'       => $post,
 	    'categories' => Category::all(),
 	  ));
-	}),
+	},
 	
 	'POST /posts' => array('name' => 'create_post', 'before' => 'auth, editor, csrf', 'do' => function()
 	{
