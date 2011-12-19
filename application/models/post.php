@@ -21,11 +21,6 @@ class Post extends Eloquent
       return $this->belongs_to('Category');
     }
 
-    public function tags()
-    {
-      return $this->has_and_belongs_to_many('Tag','post_tag');
-    }
-
     private $errors = array();
 
     public function errors()
