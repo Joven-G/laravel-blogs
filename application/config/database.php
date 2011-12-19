@@ -14,7 +14,7 @@ return array(
 	|
 	*/
 
-	'default' => 'sqlite',
+	'default' => 'mysql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -52,10 +52,10 @@ return array(
 
 		'mysql' => array(
 			'driver'   => 'mysql',
-			'host'     => 'localhost',
-			'database' => 'database',
-			'username' => 'root',
-			'password' => 'password',
+			'host'     => 'a.db.shared.orchestra.io',
+			'database' => 'db_6f9bebd1',
+			'username' => 'user_6f9bebd1',
+			'password' => 'p3^GTI$P7v_Fu$',
 			'charset'  => 'utf8',
 		),
 
