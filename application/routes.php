@@ -47,5 +47,5 @@ return array(
 	      'post'       => $post
 	    ));
 	  }
-	}),
+	}
 );
