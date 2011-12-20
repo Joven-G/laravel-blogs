@@ -51,52 +51,5 @@ return array(
 	    ));
 	  }
 	}),
-	
-//----------------- Comments -------------------
 
-  'POST /comments' => array('name' => 'create_comment', 'before' => 'csrf', 'do' => function() 
-  {
-    $comment = new Comment;
-    $comment->fill(array(
-      'username' => Input::get('username'),
-      'email'    => Input::get('email'),
-      'content'  => Input::get('content'),
-      'post_id'  => Input::get('post_id'),
-    ));  
-    if ($comment->is_valid())
-    {
-      $comment->save();
-      return json_encode(array('status' => 1, 'data' => View::make('comments.show', array('comment' => $comment))->get()));
-    }
-    else
-    {
-      return json_encode(array('status' => 0, 'data' => View::make('comments.new', array('comment' => $comment))->get()));
-    }
-  }),
-
-//----------------- Categories -----------------
-  'GET /categories/new' => array('name' => 'new_category', 'before' => 'auth', 'do' => function()
-  {
-    $category = new Category;
-    return View::make('layouts.default')->partial('content', 'categories.new', array(
-      'category' => $category,  
-    ));
-  }),
-
-  'POST /categories' => array('name' => 'create_category', 'before' => 'auth, csrf', 'do' => function()
-  {
-    $category = new Category;
-    $category->fill(array('name' => Input::get('name')));
-    if ($category->is_valid())
-    {
-      $category->save();
-      return Redirect::to_home()->with('success', 'Category created successfully');
-    }
-    else
-    {
-      return View::make('layouts.default')->partial('content', 'categories.new', array(
-        'category' => $category,  
-      ));
-    }
-  }),
 );
