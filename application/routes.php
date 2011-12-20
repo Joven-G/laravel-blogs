@@ -10,7 +10,7 @@ return array(
 		  'posts' => $posts,
 		));
 	},
-	
+	/*
 	'GET /posts/(\d+)' => function($id)
 	{
 	  Asset::add('post_show', 'js/posts/show.js');
@@ -51,5 +51,5 @@ return array(
 	    ));
 	  }
 	}),
-
+        */
 );
