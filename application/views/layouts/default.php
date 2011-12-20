@@ -18,12 +18,6 @@
           <li class="separator">|</li>
           <li><?php echo HTML::link_to_new_post('Add Post'); ?></li>
           <?php endif; ?>
-          <?php if (Auth::user()->is_admin()): ?>
-            <li class="separator">|</li>
-            <li><?php echo HTML::link_to_new_category('Add Category'); ?></li>
-            <li class="separator">|</li>
-            <li><?php echo HTML::link_to_users('Manage Users'); ?></li>
-          <?php endif; ?>
         </ul>
       </div>
     </div>
@@ -31,7 +25,7 @@
   <div class="container">
     <h1>Laravel Powered Blog</h1>
     <div id="nav">
-      <li><?php echo HTML::link_to_home('Home'); ?></li>
+      <li><?php echo HTML::link_to_posts('Posts'); ?></li>
       <li class="separator">|</li>
       <?php if ( ! Auth::check()): ?>
       <li class="separator">|</li>
