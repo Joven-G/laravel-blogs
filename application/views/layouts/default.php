@@ -14,9 +14,6 @@
       <li class="separator">|</li>
       <?php endif; ?>
     </div>
-    <?php echo App::flash_notice(); ?>
-    <?php echo App::flash_success(); ?>
-    <?php echo App::flash_error(); ?>
     <?php echo $content; ?>
   </div>
   <?php echo Asset::scripts(); ?>
