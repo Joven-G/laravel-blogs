@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>The Laravel Playground</title>
-  <link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset('css/style.css'); ?>" />
   <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
   <?php echo Asset::styles(); ?>
 </head>
