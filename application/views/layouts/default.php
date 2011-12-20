@@ -7,17 +7,27 @@
 </head>
 <body>
   <div class="topbar">
-    <div class="topbar-inner">
-      <div class="container">
-        <h3><a class="brand" href="">Laravel Blog</a></h3>
-        <ul class="nav">
-          <li><a href="#">Sign In</a></li>
-          <li><a href="#">Latest</a></li>
-        </ul>
-        <?php echo $content; ?>
-      </div><!-- end of container div -->
-    </div><!-- end of topbar-inner div -->
-    <?php echo Asset::scripts(); ?>
+    <div class="fill">
+      <div class="topbar-inner">
+        <div class="container">
+          <h3><a class="brand" href="">Laravel Blog</a></h3>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Sign In</a></li>
+          </ul>
+          <form action="" class="pull-right">
+            <input class="input-small" type="text" placeholder="Username">
+            <input class="input-small" type="password" placeholder="Password">
+            <button class="btn" type="submit">Sign in</button>
+          </form>
+        </div><!-- end of container div -->
+      </div><!-- end of topbar-inner div -->
   </div><!-- end of topbar div -->
+  <div class="container">
+    <div class="content">
+      <?php echo $content; ?>
+    </div><!-- end of content div-->
+  </div><!-- end of container -->
+  <?php echo Asset::scripts(); ?>
 </body>
 </html>

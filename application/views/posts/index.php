@@ -1,7 +1,10 @@
-<h2>The Posts</h2>
+<div class="page-header">
+  <h1>Posts <small>Viewing all posts</small></h1>
+</div>
 
 <?php foreach ($posts->results as $post): ?>
 <div class="post_box">
+  <div class="page-header">
   <h3><?php echo HTML::entities($post->title); ?></h3>
   <div class="author">By: <strong><?php echo $post->user->username; ?></strong></div>
   <div class="category">
