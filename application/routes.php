@@ -11,13 +11,13 @@ return array(
 		));
 	},
 
-	'GET /posts/(\d+)' => array('name' => 'show_post', function($id))
+	'GET /posts/(\d+)' => array('name' => 'show_post', function($id)
 	{
 	  $post = Post::find($id);
 	  return View::make('layouts.default')->nest('content', 'posts.show', array(
 	    'post' => $post,
 	  ));
-	},
+	}),
 	
 	'GET /posts/new' => function()
 	{
