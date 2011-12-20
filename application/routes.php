@@ -13,8 +13,7 @@ return array(
 
 	'GET /posts/(\d+)' => function($id)
 	{
-	  Asset::add('post_show', 'js/posts/show.js');
-	  $post = Post->find($id);
+	  $post = Post::find($id);
 	  return View::make('layouts.default')->nest('content', 'posts.show', array(
 	    'post' => $post,
 	  ));
