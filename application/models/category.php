@@ -1,6 +1,6 @@
 <?php
 
-class Category extend Eloquent
+class Category extends Eloquent
 {
 
   public static $timestamps = true;
