@@ -7,12 +7,12 @@
 </head>
 <body>
   <ul>
-    <li><?php echo HTML::link_to_new_post('Add Post'); ?></li>\
+    <li><?php echo HTML::link_to_new_posts('Add Post'); ?></li>\
   </ul>
   <div class="container">
     <h1>Laravel Powered Blog</h1>
     <div id="nav">
-      <li><?php echo HTML::link_to_post('Posts'); ?></li>
+      <li><?php echo HTML::link_to_posts('Posts'); ?></li>
       <li class="separator">|</li>
       <?php if ( ! Auth::check()): ?>
       <li class="separator">|</li>
