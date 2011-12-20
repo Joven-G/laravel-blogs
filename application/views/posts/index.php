@@ -8,7 +8,7 @@
     Published under: <strong><?php echo $post->category->name; ?></strong>
   </div>
   <div class="content"><?php echo HTML::entities($post->content); ?></div>
-  <?php echo HTML::link(URL::to_show_post(array($post-id)), 'More'); ?>
+  <?php echo HTML::link(URL::to_show_post(array($post->id)), 'More'); ?>
 </div>
 <?php endforeach; ?>
 <?php echo $posts->links(); ?>
