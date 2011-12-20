@@ -14,8 +14,8 @@ return array(
 	'GET /posts/(\d+)' => function($id)
 	{
 	  Asset::add('post_show', 'js/posts/show.js');
-	  $post = Post::with('user', 'comments', 'category')->find($id);
-	  return View::make('layouts.default')->partial('content', 'posts.show', array(
+	  $post = Post->find($id);
+	  return View::make('layouts.default')->nest('content', 'posts.show', array(
 	    'post' => $post,
 	  ));
 	},
@@ -23,13 +23,12 @@ return array(
 	'GET /posts/new' => function()
 	{
 	  $post = new Post;
-	  return View::make('layouts.default')->partial('content', 'posts.new', array(
-	    'post'       => $post,
-	    'categories' => Category::all(),
+	  return View::make('layouts.default')->nest('content', 'posts.new', array(
+	    'post'       => $post
 	  ));
 	},
 	
-	'POST /posts' => array('name' => 'create_post', 'before' => 'auth, editor, csrf', 'do' => function()
+	'POST /posts' => function()
 	{
 	  $post = new Post;
 	  $post->fill(array(
@@ -45,9 +44,8 @@ return array(
 	  }
 	  else
 	  {
-	    return View::make('layouts.default')->partial('content', 'posts.new', array(
-	      'post'       => $post,
-	      'categories' => Category::all(),
+	    return View::make('layouts.default')->nest('content', 'posts.new', array(
+	      'post'       => $post
 	    ));
 	  }
 	}),
