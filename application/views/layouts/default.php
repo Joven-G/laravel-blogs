@@ -6,26 +6,13 @@
   <?php echo Asset::styles(); ?>
 </head>
 <body>
-  <?php if (Auth::check()): ?>
-    <div class="user-panel">
-      <div class="container">
-        <ul>
-          <li>  
-            Logged in as <strong><?php echo Auth::user()->username; ?></strong> 
-            <?php echo HTML::link_to_logout('Logout'); ?>
-          </li>
-          <?php if (Auth::user()->is_editor()): ?>
-          <li class="separator">|</li>
-          <li><?php echo HTML::link_to_new_post('Add Post'); ?></li>
-          <?php endif; ?>
-        </ul>
-      </div>
-    </div>
-  <?php endif; ?>
+  <ul>
+    <li><?php echo HTML::link_to_new_post('Add Post'); ?></li>\
+  </ul>
   <div class="container">
     <h1>Laravel Powered Blog</h1>
     <div id="nav">
-      <li><?php echo HTML::link_to_posts('Posts'); ?></li>
+      <li><?php echo HTML::link_to_post('Posts'); ?></li>
       <li class="separator">|</li>
       <?php if ( ! Auth::check()): ?>
       <li class="separator">|</li>
