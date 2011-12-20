@@ -6,7 +6,7 @@ return array(
 	'GET /, GET /posts' => function()
 	{
 	  $posts = Post::with('user', 'category')->paginate();
-		return View::make('layouts.default')->partial('content', 'posts.index', array(
+		return View::make('layouts.default')->nest('content', 'posts.index', array(
 		  'posts' => $posts,
 		));
 	},
