@@ -22,6 +22,7 @@
           </form>
         </div><!-- end of container div -->
       </div><!-- end of topbar-inner div -->
+    </div><!-- end of fill div -->
   </div><!-- end of topbar div -->
   <div class="container">
     <div class="content">
