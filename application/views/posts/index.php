@@ -9,5 +9,6 @@
       <br />
       <?php echo HTML::entities($post->content); ?>
       <?php echo HTML::link(URL::to_show_post(array($post->id)), 'More'); ?>
+      <br />
       <?php endforeach; ?>
       <?php echo $posts->links(); ?>
